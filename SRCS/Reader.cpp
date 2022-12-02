@@ -36,7 +36,7 @@ static void	parseMtrl(const string& line, Recipe& recipe, int& idx, int& column)
 	while (line[idx]){
 		string token = "";
 		skipBracket(line, idx);
-		if (line[idx] == ' ') idx++;
+		while (line[idx] == ' ') idx++;
 		while (line[idx] && line[idx] != '|' && line[idx] != '[') {
 			token += line[idx];
 			idx++;
@@ -53,9 +53,7 @@ static void	parseMtrl(const string& line, Recipe& recipe, int& idx, int& column)
 
 void read(vector<RBRecipe>& recipes){
 	ifstream fin("DATA/recipe_DB.csv");
-	// ofstream fout("recipe_()_rm2.csv");
 	ofstream fout("DATA/result.csv");
-	// vector<Recipe> recipes;
 	if (fin.is_open() && fout.is_open()) {
 		while (!fin.eof()) {
 			RBRecipe recipe;
@@ -72,8 +70,43 @@ void read(vector<RBRecipe>& recipes){
 			}
 			if (idx == 0) break;
 			parseMtrl(line, recipe, idx, column);
-			fout << recipe;
+			// if (recipe.id == "50000") {
+			// 	cout << "¸¶Áö¸·\n";
+			// }
 			recipes.push_back(recipe);
+			// if (recipes.size() % 1000 == 0) {
+			// 	cout << recipes.size() <<"\n";
+			// }
+			fout << recipe;
+		}
+		cout << recipes.size() << "\n";
+		fin.close();
+		fout.close();
+	}
+}
+
+void	read(vector<HashRecipe>& recipes) {
+	ifstream fin("DATA/recipe_DB.csv");
+	ofstream fout("DATA/result_hash.csv");
+	if (fin.is_open() && fout.is_open()) {
+		while (!fin.eof()) {
+			HashRecipe recipe;
+			string line;
+			getline(fin, line);
+			if (line.substr(0, 2) == "NO")
+				continue;
+			removeBracket(line);
+			int idx = 0;
+			int column = 1;
+			while (column <= 6) {
+				parseLineOther(line, recipe, idx, column);
+				if (idx == 0) break;
+			}
+			if (idx == 0) break;
+			parseMtrl(line, recipe, idx, column);
+			recipes.push_back(recipe);
+			fout << recipe;
+			// fout << recipe;
 		}
 		cout << recipes.size() << "\n";
 		fin.close();

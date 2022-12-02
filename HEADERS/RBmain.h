@@ -1,8 +1,9 @@
-#ifndef MAIN_H
-#define MAIN_h
+#ifndef RBMAIN_H
+#define RBMAIN_H
 #include <cstddef>
 #include <locale>
 #include "Reader.h"
 #include "RedBlackTree.h"
 #include "RBRecipe.h"
+
 #endif

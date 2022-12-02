@@ -31,18 +31,18 @@ RedBlackNode * RedBlackNode::sibling() {
 		case 'R':
 			return parent->leftChild;
 		case 'E':
-			return NULL;
+			return Tnil;
 	}
-	return NULL;
+	return Tnil;
 }
 
 RedBlackNode * RedBlackNode::cousin() {
-	if (parent == NULL) return NULL;
+	if (parent == Tnil) return Tnil;
 	return parent->sibling();
 }
 
 char	RedBlackNode::whichChild() {
-	if (parent == NULL) return 'E';
+	if (parent == Tnil) return 'E';
 	if (parent->leftChild == this) return 'L';
 	else return 'R';
 }

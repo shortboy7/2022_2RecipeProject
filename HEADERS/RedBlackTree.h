@@ -1,6 +1,7 @@
 #ifndef REDBLACKTREE_H
 #define REDBLACKTREE_H
 #include <fstream>
+#include <vector>
 #include "RedBlackNode.h"
 
 int	getDigits(int num);

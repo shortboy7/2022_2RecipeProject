@@ -11,6 +11,7 @@ public:
 		Recipe();
 	}
  	void	pushIngredient(std::string & token) override;
+	bool	canMake(RedBlackTree& myIngred);
 	void	print();
 	friend std::ostream& operator<<(std::ofstream& out, const RBRecipe& recipe) {
 		out << recipe.id << ","
@@ -19,13 +20,6 @@ public:
 		<< recipe.level << ","
 		<< recipe.time << ",";
 		recipe.tree.print(out);
-		// for (int i = 0; i < recipe.ingredientNum ; i++) {
-
-		// 	out << recipe.mtrl[i].name;
-		// 	out << ":" << recipe.mtrl[i].quantity;
-		// 	if (i != recipe.ingredientNum - 1)
-		// 		out << "|";
-		// }
 		out << "\n";
 		return out;
 	}

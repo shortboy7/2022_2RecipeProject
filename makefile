@@ -7,8 +7,13 @@ SRCS_DIR = SRCS
 OBJS_DIR = OBJS
 HEADER_DIR = HEADERS
 
-SOURSES = main.cpp Reader.cpp Ingredient.cpp Recipe.cpp RedBlackNode.cpp RedBlackTree.cpp utils.cpp RBrecipe.cpp
-HEADERS = main.h   Reader.h   Ingredient.h   Recipe.h   RedBlackNode.h   RedBlackTree.h   utils.h   RBrecipe.h
+RBSOURSES = RedBlackNode.cpp RedBlackTree.cpp RBrecipe.cpp RBmain.cpp
+
+HTSOURSES = Hashmain.cpp HashRecipe.cpp
+HTHEADERS = Hashmain.h   HashRecipe.h
+
+SOURSES = Hashmain.cpp Reader.cpp Ingredient.cpp Recipe.cpp RedBlackNode.cpp RedBlackTree.cpp utils.cpp RBrecipe.cpp HashRecipe.cpp
+HEADERS = Hashmain.h   Reader.h   Ingredient.h   Recipe.h   RedBlackNode.h   RedBlackTree.h   utils.h   RBrecipe.h   HashRecipe.h
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SOURSES))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SOURSES:.cpp=.o))

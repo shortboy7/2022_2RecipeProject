@@ -138,7 +138,7 @@ void	RedBlackTree::insert(Ingredient data) {
 	RedBlackNode * newNode = new RedBlackNode(data);
 	RedBlackNode * temp = root;
 	if (root->isTnil()) {
-		cout << "root is empty\n";
+		// cout << "root is empty\n";
 		root = newNode;
 		root->color = 'B';
 		return;
@@ -176,7 +176,7 @@ void	RedBlackTree::printRecur(std::ostream& out , RedBlackNode * root) const{
 		return ;
 	}
 	printRecur(out, root->leftChild);
-	out << root->data << "&";
+	out << root->data << " &&";
 	printRecur(out, root->rightChild);
 }
 

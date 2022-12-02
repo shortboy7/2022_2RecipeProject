@@ -1,4 +1,6 @@
 // #include "RedBlackTree.h"
+#ifndef RECIPE_H
+#define RECIPE_H
 #include "Ingredient.h"
 #include <fstream>
 
@@ -23,7 +25,6 @@ public:
 		std::string time_
 	);
 	virtual void	pushIngredient(std::string & token);
-
 	friend std::ostream& operator<<(std::ostream& out, const Recipe& recipe) {
 		out << "요리 번호 : " << recipe.id << " "
 		<< "요리 이름 : " << recipe.name << " "
@@ -32,7 +33,8 @@ public:
 		<< "요리 시간 : " << recipe.time << "\n"
 		<< "요리 재료 : \n";
 		for (int i = 0; i < recipe.ingredientNum ; i++) {
-			out << recipe.mtrl[i].name;
+			out << recipe.mtrl[i].name << " : ";
+			out << recipe.mtrl[i].quantity;
 			if (i != recipe.ingredientNum - 1)
 				out << ",";
 		}
@@ -54,3 +56,4 @@ public:
 		return out;
 	}
 };
+#endif
