@@ -63,7 +63,7 @@ int	getTime(const std::string& line) {
 	return sum;
 }
 
-int getLevel(const std::string& line) {
+int getLevel(const string& line) {
 	if (line.compare(0, 4, "초급") == 0) {
 		return 1;
 	}else if (line.compare(0, 4, "중급") == 0) {
@@ -72,7 +72,9 @@ int getLevel(const std::string& line) {
 		return 3;
 	}else if (line.compare(0, 6, "아무나") == 0) {
 		return 0;
+	}else if (line.compare(0, 8, "신의경지") == 0) {
+		return 4;
 	}
-	cout << "등급 오류\n";
+	cout << "등급 오류" << line << "\n";
 	return -1;
 }
