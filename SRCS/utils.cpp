@@ -78,3 +78,7 @@ int getLevel(const string& line) {
 	cout << "등급 오류" << line << "\n";
 	return -1;
 }
+
+int	getAmount(const string& line) {
+	return line[0] - '0';
+}
