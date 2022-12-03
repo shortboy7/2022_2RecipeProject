@@ -1,4 +1,5 @@
 #include "../HEADERS/utils.h"
+using namespace std;
 
 static char opBracket(char b) {
 	switch(b) {
@@ -41,4 +42,37 @@ void skipBracket(const std::string& line, int& idx, char bracket)
 		while (line[idx] && line[idx] != opBracket(bracket)) idx++;
 		idx++;
 	}
+}
+
+int	getTime(const std::string& line) {
+	int i = 0,idx = 0, sum = 0;
+	while(line[idx] == ' ') idx++;
+	for (i = idx; i < line.size(); i++) {
+		if (line.compare(i, 2, "분") == 0)
+			break;
+		else if (line.compare(i, 4, "시간") == 0) {
+			sum *= 60;
+			if (line.compare(i + 4, 4, "이상") == 0)
+				sum += 1;
+			break;
+		}
+		if ('0' <= line[i] && line[i] <= '9') {
+			sum = 10 * sum + (line[i] - '0');
+		}
+	}
+	return sum;
+}
+
+int getLevel(const std::string& line) {
+	if (line.compare(0, 4, "초급") == 0) {
+		return 1;
+	}else if (line.compare(0, 4, "중급") == 0) {
+		return 2;
+	}else if (line.compare(0, 4, "고급") == 0) {
+		return 3;
+	}else if (line.compare(0, 6, "아무나") == 0) {
+		return 0;
+	}
+	cout << "등급 오류\n";
+	return -1;
 }
