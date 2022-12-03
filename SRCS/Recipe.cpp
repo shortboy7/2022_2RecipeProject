@@ -4,9 +4,9 @@ Recipe::Recipe(
 	int id_,
 	std::string name_,
 	std::string category_,
-	std::string amount,
-	std::string	level_,
-	std::string time_) {
+	int	amount,
+	int	level_,
+	int time_) {
 	id = id_;
 	name = name_;
 	category = category_;

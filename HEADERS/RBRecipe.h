@@ -12,11 +12,14 @@ public:
 	}
  	void	pushIngredient(std::string & token) override;
 	bool	canMake(RedBlackTree& myIngred);
+	bool	canMakeVec(RedBlackTree& myIngred);
+	bool	canMakeTree(RedBlackTree& myIngred);
 	void	print();
-	friend std::ostream& operator<<(std::ofstream& out, const RBRecipe& recipe) {
+	friend std::ofstream& operator<<(std::ofstream& out, const RBRecipe& recipe) {
 		out << recipe.id << ","
 		<< recipe.name << ","
 		<< recipe.category << ","
+		<< recipe.amount << ","
 		<< recipe.level << ","
 		<< recipe.time << ",";
 		recipe.tree.print(out);

@@ -20,15 +20,26 @@ int main(){
 			}
 			ingred.insert(Ingredient( input.substr(0, i), input.substr(i + 1, input.size() - i)));
 		}
-		cout << "\n";
+		// cout << "\n";
 		fin.close();
 	}
+	Timer timer_v;
 	for (auto & page : book) {
-		if (page.canMake(ingred)) {
-			cout << page << "\n";
+		if (page.canMakeVec(ingred)) {
+			canMakeRecipe.push_back(page);
+			// cout << page << "\n";
 		}
 	}
-
+	timer_v.end("RB tree vec");
+	Timer timer_tree;
+	for (auto & page : book) {
+		if (page.canMakeTree(ingred)) {
+			canMakeRecipe.push_back(page);
+			// cout << page << "\n";
+		}
+	}
+	timer_tree.end("RB tree tree");
+	cout << canMakeRecipe.size() << "\n";
 	// do{
 	// 	cin >> cmd;
 	// 	switch(cmd) {

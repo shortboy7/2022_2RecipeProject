@@ -15,13 +15,16 @@ private:
 	void	rotate(RedBlackNode * node);
 	void	fixUpTree(RedBlackNode * newNode);
 	void	printRecur(std::ostream& out , RedBlackNode * node) const;
+	bool	traverseRecur(RedBlackNode * node, RedBlackTree& myIngred);
 public:
+	static int nodeNum;
 	RedBlackTree();
 	RedBlackNode *search(Ingredient data);
 	RedBlackNode *search(std::string data);
 	void	insert(Ingredient data);
 	void	deleteRecursive(RedBlackNode * node);
 	void	print(std::ostream& out) const;
+	bool	traverse(RedBlackTree& myIngred);
 	~RedBlackTree();
 };
 

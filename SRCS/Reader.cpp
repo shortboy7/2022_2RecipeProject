@@ -19,13 +19,13 @@ static void	parseLineOther(const string& line, Recipe& recipe, int& idx, int& co
 			recipe.category = token;
 			break;
 		case 4:
-			recipe.amount = token;
+			recipe.amount = getAmount(token);
 			break;
 		case 5:
-			recipe.level = token;
+			recipe.level = getLevel(token);
 			break;
 		case 6:
-			recipe.time = token;
+			recipe.time = getTime(token);
 			break;
 	}
 	idx++;
@@ -42,7 +42,6 @@ static void	parseMtrl(const string& line, Recipe& recipe, int& idx, int& column)
 			idx++;
 		}
 		skipBracket(line, idx);
-		// if (line[idx] == ' ') idx++;
 		if (!token.empty()){
 			if (token[token.size() - 1] == ' ') token.pop_back();
 			recipe.pushIngredient(token);
@@ -70,13 +69,7 @@ void read(vector<RBRecipe>& recipes){
 			}
 			if (idx == 0) break;
 			parseMtrl(line, recipe, idx, column);
-			// if (recipe.id == "50000") {
-			// 	cout << "¸¶Áö¸·\n";
-			// }
 			recipes.push_back(recipe);
-			// if (recipes.size() % 1000 == 0) {
-			// 	cout << recipes.size() <<"\n";
-			// }
 			fout << recipe;
 		}
 		cout << recipes.size() << "\n";

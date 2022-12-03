@@ -183,3 +183,15 @@ void	RedBlackTree::printRecur(std::ostream& out , RedBlackNode * root) const{
 void	RedBlackTree::print(std::ostream& out) const{
 	printRecur(out, root);
 }
+
+bool	RedBlackTree::traverseRecur(RedBlackNode * node,RedBlackTree& myIngred) {
+	if (node->isTnil()) return true;
+	if (!traverseRecur(node->leftChild, myIngred)) return false;
+	if (!myIngred.search(node->data.name)) return false;
+	if (!traverseRecur(node->rightChild, myIngred)) return false;
+	return false;
+}
+
+bool	RedBlackTree::traverse(RedBlackTree& myIngred) {
+	return traverseRecur(root, myIngred);
+}

@@ -11,18 +11,18 @@ public:
 	std::string id;
 	std::string name;
 	std::string category;
-	std::string amount;
-	std::string	level;
-	std::string time;
+	int	amount;
+	int	level;
+	int time;
 	Ingredient mtrl[100];
 	Recipe() {}
 	Recipe(
 		int id_,
 		std::string name_,
 		std::string category_,
-		std::string amount,
-		std::string	level_,
-		std::string time_
+		int	amount,
+		int	level_,
+		int time_
 	);
 	virtual void	pushIngredient(std::string & token);
 	friend std::ostream& operator<<(std::ostream& out, const Recipe& recipe) {
@@ -44,6 +44,7 @@ public:
 		out << recipe.id << ","
 		<< recipe.name << ","
 		<< recipe.category << ","
+		<< recipe.amount << ","
 		<< recipe.level << ","
 		<< recipe.time << ",";
 		for (int i = 0; i < recipe.ingredientNum ; i++) {
