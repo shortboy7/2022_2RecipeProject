@@ -2,7 +2,7 @@
 #define INGREDIENT_H
 #include <string>
 #include <iostream>
-
+#include <fstream>
 class Ingredient{
 public:
 	std::string	name;

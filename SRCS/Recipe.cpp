@@ -1,4 +1,5 @@
 #include "../HEADERS/Recipe.h"
+using namespace std;
 
 Recipe::Recipe(
 	int id_,
@@ -30,4 +31,20 @@ void	Recipe::pushIngredient(std::string & token) {
 	mtrl[ingredientNum].name = aft;
 	mtrl[ingredientNum].quantity = qua;
 	ingredientNum++;
+}
+
+bool	Recipe::canMake(Ingredient *myIngred, int size){
+	for (int i = 0; i < ingredientNum; i++) {
+		bool found = false;
+		for (int j = 0 ; j < size; j++) {
+			// std::cout << i << " " << j << " compare\n";
+			if (mtrl[i].name == myIngred[j].name) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+	// cout << name <<"\n";
+	return true;
 }

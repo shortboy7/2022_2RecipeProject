@@ -3,14 +3,22 @@ using namespace std;
 
 RedBlackNode * Tnil = new RedBlackNode();
 
-int main(){
+int main(int argc, char *argv[]){
+	string path = "";
+	if (argc == 1) {
+		path = "DATA/myIngred.csv";
+	}else {
+		path = argv[1];
+	}
+	Timer timer;
 	setlocale(LC_ALL, "ko_KR.EUC-KR");
-	vector<RBRecipe> book;
-	vector<RBRecipe> canMakeRecipe;
+	RecipeArray<RBRecipe> arr(50004);
+	RecipeArray<RBRecipe> canMakeRecipe(50004);
 	RedBlackTree ingred;
-	read(book);
-	ifstream fin("DATA/myIngred.csv");
+	arr.read();
+	ifstream fin(path);
 	if (fin.is_open()) {
+		cout << path << "is opened \n";
 		string input;
 		while(!fin.eof()) {
 			getline(fin, input);
@@ -20,32 +28,26 @@ int main(){
 			}
 			ingred.insert(Ingredient( input.substr(0, i), input.substr(i + 1, input.size() - i)));
 		}
-		// cout << "\n";
 		fin.close();
 	}
-	Timer timer_v;
-	for (auto & page : book) {
-		if (page.canMakeVec(ingred)) {
-			canMakeRecipe.push_back(page);
+	cout << argv[1] << "\n";
+	timer.start();
+	for (int i = 0 ; i < arr.curSize; i++) {
+		if (arr.recipes[i].canMakeVec(ingred)) {
+			canMakeRecipe.push_back(arr.recipes[i]);
 			// cout << page << "\n";
 		}
 	}
-	timer_v.end("RB tree vec");
-	Timer timer_tree;
-	for (auto & page : book) {
-		if (page.canMakeTree(ingred)) {
-			canMakeRecipe.push_back(page);
-			// cout << page << "\n";
+	timer.end("RB tree vec");
+	canMakeRecipe.curSize = 0;
+	timer.start();
+	for (int i = 0 ; i < arr.curSize; i++) {
+		if (arr.recipes[i].canMakeTree(ingred)) {
+			canMakeRecipe.push_back(arr.recipes[i]);
+			// cout << arr.recipes[i] << "\n";
 		}
 	}
-	timer_tree.end("RB tree tree");
-	cout << canMakeRecipe.size() << "\n";
-	// do{
-	// 	cin >> cmd;
-	// 	switch(cmd) {
-	// 		case 's':
+	timer.end("RB tree tree");
 
-	// 	}
-	// }while (cmd != 'q' || cmd != 'Q');
 	return 0;
 }

@@ -5,7 +5,8 @@
 #include "utils.h"
 #include <vector>
 
+void	parseLineOther(const std::string& line, Recipe& recipe, int& idx, int& column);
+void	parseMtrl(const std::string& line, Recipe& recipe, int& idx, int& column);
 
-void read(std::vector<RBRecipe>& recipes);
-void read(std::vector<HashRecipe>& recipes);
+
 #endif

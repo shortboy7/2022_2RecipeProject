@@ -11,6 +11,7 @@ private:
 	clock_t endTime;
 public:
 	Timer();
+	void	start();
 	double end(const std::string& message = "time", std::ostream& out = std::cout);
 };
 #endif

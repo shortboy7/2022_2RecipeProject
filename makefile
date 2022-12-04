@@ -1,6 +1,5 @@
 NAME = recipe
 CC = g++
-AR = ar rcs
 RM = rm -f
 
 SRCS_DIR = SRCS
@@ -9,17 +8,40 @@ HEADER_DIR = HEADERS
 
 RBSOURSES = RedBlackNode.cpp RedBlackTree.cpp RBrecipe.cpp RBmain.cpp
 
-HTSOURSES = Hashmain.cpp HashRecipe.cpp
-HTHEADERS = Hashmain.h   HashRecipe.h
 
-SOURSES = Hashmain.cpp Reader.cpp Ingredient.cpp Recipe.cpp RedBlackNode.cpp RedBlackTree.cpp utils.cpp RBrecipe.cpp HashRecipe.cpp
-HEADERS = Hashmain.h   Reader.h   Ingredient.h   Recipe.h   RedBlackNode.h   RedBlackTree.h   utils.h   RBrecipe.h   HashRecipe.h
+ifeq ($(MAKECMDGOALS), )
+	MAIN = Arraymain.cpp
+	MAIN_H = Arraymain.h
+endif
+
+ifeq ($(MAKECMDGOALS), all)
+	MAIN = Arraymain.cpp
+	MAIN_H = Arraymain.h
+endif
+
+ifeq ($(MAKECMDGOALS), rb)
+	MAIN = RBmain.cpp
+	MAIN_H = RBmain.h
+endif
+
+ifeq ($(MAKECMDGOALS), hs)
+	MAIN = Hashmain.cpp
+	MAIN_H = Hashmain.h
+endif
+
+SOURSES = $(MAIN)   Reader.cpp Ingredient.cpp Recipe.cpp RedBlackNode.cpp RedBlackTree.cpp utils.cpp RBrecipe.cpp HashRecipe.cpp timer.cpp RecipeArray.cpp Service.cpp
+HEADERS = $(MAIN_H) Reader.h   Ingredient.h   Recipe.h   RedBlackNode.h   RedBlackTree.h   utils.h   RBrecipe.h   HashRecipe.h   timer.h   RecipeArray.h   Service.h
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SOURSES))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SOURSES:.cpp=.o))
 HDRS = $(addprefix $(HEADER_DIR)/, $(HEADERS))
 
 all: $(NAME)
+
+rb : $(OBJS) $(HDRS)
+	$(CC) $(FLAG) $(OBJS) -o $(NAME) -I $(HEADER_DIR)
+hs : $(OBJS) $(HDRS)
+	$(CC) $(OBJS) -o $(NAME) -I $(HEADER_DIR)
 
 $(NAME) : $(OBJS) $(HDRS)
 	$(CC) $(OBJS) -o $(NAME) -I $(HEADER_DIR)
@@ -31,6 +53,8 @@ HEDAERS/Reader.h : HEADERS/Recipe.h
 HEADERS/Recipe.h : HEADERS/Ingredient.h
 HEADERS/RedBlackTree.h : HEADERS/RedBlackNode.h
 HEADERS/RedBlackNode.h : HEADERS/Ingredient.h
+HEADERS/RBrecipe.h : HEADERS/Recipe.h
+HEADERS/HashRecipe.h : HEADERS/Recipe.h
 
 clean:
 	$(RM) $(OBJS)

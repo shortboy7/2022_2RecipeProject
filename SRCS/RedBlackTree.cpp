@@ -187,9 +187,9 @@ void	RedBlackTree::print(std::ostream& out) const{
 bool	RedBlackTree::traverseRecur(RedBlackNode * node,RedBlackTree& myIngred) {
 	if (node->isTnil()) return true;
 	if (!traverseRecur(node->leftChild, myIngred)) return false;
-	if (!myIngred.search(node->data.name)) return false;
+	if (myIngred.search(node->data.name) == Tnil) return false;
 	if (!traverseRecur(node->rightChild, myIngred)) return false;
-	return false;
+	return true;
 }
 
 bool	RedBlackTree::traverse(RedBlackTree& myIngred) {

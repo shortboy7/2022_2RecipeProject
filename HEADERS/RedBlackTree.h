@@ -17,7 +17,6 @@ private:
 	void	printRecur(std::ostream& out , RedBlackNode * node) const;
 	bool	traverseRecur(RedBlackNode * node, RedBlackTree& myIngred);
 public:
-	static int nodeNum;
 	RedBlackTree();
 	RedBlackNode *search(Ingredient data);
 	RedBlackNode *search(std::string data);

@@ -2,12 +2,14 @@
 using namespace std;
 
 Timer::Timer() {
-	startTime = clock();
 }
 
+void	Timer::start() {
+	startTime = clock();
+}
 double Timer::end(const std::string& message, std::ostream& out) {
 	endTime = clock();
-	double result = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+	double result = (double)(endTime - startTime);
 	out << message << "\n";
 	out << result << "\n";
 	return result;

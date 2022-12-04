@@ -5,8 +5,8 @@
 
 class RBRecipe : public Recipe{
 private:
-	RedBlackTree tree;
 public:
+	RedBlackTree tree;
 	RBRecipe() {
 		Recipe();
 	}

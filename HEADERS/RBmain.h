@@ -6,4 +6,7 @@
 #include "RedBlackTree.h"
 #include "RBRecipe.h"
 #include "timer.h"
+#include "RecipeArray.h"
+#include "Service.h"
+
 #endif
