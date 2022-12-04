@@ -32,5 +32,6 @@
 *.app
 
 test/*
-
 DATA/legacy/*
+*.xlsx
+*.sh

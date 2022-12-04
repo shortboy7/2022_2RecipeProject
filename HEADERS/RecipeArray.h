@@ -11,7 +11,7 @@ public:
 	int maxSize;
 	int curSize;
 	T *recipes;
-	RecipeArray(int size) {
+ 	RecipeArray(int size) {
 		maxSize = size;
 		curSize = 0;
 		recipes = new T[maxSize];

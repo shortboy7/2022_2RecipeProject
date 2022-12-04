@@ -8,8 +8,8 @@ template class RecipeArray<HashRecipe>;
 template <typename T>
 void RecipeArray<T>::read() {
 	ifstream fin("DATA/recipe_DB.csv");
-	ofstream fout("DATA/result.csv");
-	if (fin.is_open() && fout.is_open()) {
+	// ofstream fout("DATA/result.csv");
+	if (fin.is_open()) {
 		while (!fin.eof()) {
 			T recipe;
 			string line;
@@ -27,11 +27,11 @@ void RecipeArray<T>::read() {
 			if (idx == 0) break;
 			parseMtrl(line, recipe, idx, column);
 			recipes[this->curSize++] = recipe;
-			fout << recipe;
+			// fout << recipe;
 		}
 		// cout << this->curSize << "\n";
 		fin.close();
-		fout.close();
+		// fout.close();
 	}
 }
 
