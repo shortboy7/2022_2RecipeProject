@@ -33,7 +33,7 @@ SRCS = $(addprefix $(SRCS_DIR)/, $(SOURSES))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SOURSES:.cpp=.o))
 HDRS = $(addprefix $(HEADER_DIR)/, $(HEADERS))
 
-all: $(NAME)
+all: OBJS $(NAME)
 
 rb : $(OBJS) $(HDRS)
 	$(CC) $(FLAG) $(OBJS) -o $(NAME) -I $(HEADER_DIR)
@@ -61,5 +61,6 @@ debug: $(SRCS)
 	$(CC) -Wall -Wextra -Werror -g $(OBJS) -o $@
 direct: $(SRCS)
 	$(CC) $(SRCS) -o $(NAME)
-
+OBJS :
+	mkdir OBJS
 .PHONY: all clena fclean re test
