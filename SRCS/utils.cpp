@@ -48,11 +48,11 @@ int	getTime(const std::string& line) {
 	int i = 0,idx = 0, sum = 0;
 	while(line[idx] == ' ') idx++;
 	for (i = idx; i < line.size(); i++) {
-		if (line.compare(i, 2, "ºÐ") == 0)
+		if (line.compare(i, 2, "ï¿½ï¿½") == 0)
 			break;
-		else if (line.compare(i, 4, "½Ã°£") == 0) {
+		else if (line.compare(i, 4, "ï¿½Ã°ï¿½") == 0) {
 			sum *= 60;
-			if (line.compare(i + 4, 4, "ÀÌ»ó") == 0)
+			if (line.compare(i + 4, 4, "ï¿½Ì»ï¿½") == 0)
 				sum += 1;
 			break;
 		}
@@ -64,18 +64,18 @@ int	getTime(const std::string& line) {
 }
 
 int getLevel(const string& line) {
-	if (line.compare(0, 4, "ÃÊ±Þ") == 0) {
+	if (line.compare(0, 4, "ï¿½Ê±ï¿½") == 0) {
 		return 1;
-	}else if (line.compare(0, 4, "Áß±Þ") == 0) {
+	}else if (line.compare(0, 4, "ï¿½ß±ï¿½") == 0) {
 		return 2;
-	}else if (line.compare(0, 4, "°í±Þ") == 0) {
+	}else if (line.compare(0, 4, "ï¿½ï¿½ï¿½ï¿½") == 0) {
 		return 3;
-	}else if (line.compare(0, 6, "¾Æ¹«³ª") == 0) {
+	}else if (line.compare(0, 6, "ï¿½Æ¹ï¿½ï¿½ï¿½") == 0) {
 		return 0;
-	}else if (line.compare(0, 8, "½ÅÀÇ°æÁö") == 0) {
+	}else if (line.compare(0, 8, "ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½") == 0) {
 		return 4;
 	}
-	cout << "µî±Þ ¿À·ù" << line << "\n";
+	cout << "ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << line << "\n";
 	return -1;
 }
 

@@ -27,8 +27,8 @@ public:
 	virtual void	pushIngredient(std::string & token);
 	bool			canMake(Ingredient *myIngred, int size);
 	friend std::ostream& operator<<(std::ostream& out, const Recipe& recipe) {
-		out << "¿ä¸® ÀÌ¸§ : " << recipe.name << " "
-		<< "¿ä¸® Àç·á : ";
+		out << "ï¿½ä¸® ï¿½Ì¸ï¿½ : " << recipe.name << " "
+		<< "ï¿½ä¸® ï¿½ï¿½ï¿½ : ";
 		for (int i = 0; i < recipe.ingredientNum ; i++) {
 			out << recipe.mtrl[i].name << " : ";
 			out << recipe.mtrl[i].quantity;
