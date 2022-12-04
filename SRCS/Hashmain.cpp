@@ -32,33 +32,21 @@ int main(int argc, char *argv[]){
 		}
 		fin.close();
 	}
-	timer.start();
 	for (int i = 0 ; i < book.curSize ; i++)
 	{
 		if (book[i].canMakeVec(ingred))
 		{
 			canMakeRecipe1.push_back(book[i]);
-			// cout << page << "\n";
 		}
 	}
-	timer.end("vec hash");
-	// cout << "1: " << canMakeRecipe1.curSize<< "\n";
-	// timer_hash_v.end("Hashtable vec");
-	// Timer timer_tree;
-	timer.start();
 	for (int i = 0 ; i < book.curSize ; i++)
 	{
 		if (book[i].canMakeHash(ingred))
 		{
 			canMakeRecipe2.push_back(book[i]);
-			// cout << page  "\n";
 		}
 	}
-	timer.end("hash hash");
 	Service<HashRecipe> service(canMakeRecipe1);
 	service.run();
-	// timer_tree.end("Hashtable Hashtable");
-
-	// cout << "2: " << canMakeRecipe2.curSize << "\n";
 	return 0;
 }

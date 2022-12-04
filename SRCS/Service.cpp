@@ -34,7 +34,7 @@ void	Service<T>::run()
             case 3:
                 cout << "3. 요리 인분을 선택하셨습니다." << endl;
                 menu_amount();
-
+                break;
             default:
                 cout << "잘못된 값입니다." << endl;
         }
@@ -51,7 +51,7 @@ void Service<T>::menu_class(){
         cout << "1.한식메뉴 | 2.양식메뉴 | 3.찌개      | 4.국,탕       | 5.밥,죽,떡    | " << endl;
         cout << "6.메인반찬 | 7.밑반찬   | 8.김치,젓갈 | 9.양념,소스,잼 | 10.면,만두    | " << endl;
         cout << "11.빵      | 12.스프   | 13.샐러드   | 14.디저트      | 15.차,음료,술 | " << endl;
-        cout << "16.퓨전    | 17.기타   | 0. 종료" << endl;
+        cout << "16.퓨전    | 17.기타   " << endl;
 
         cin >> classCMD;
 
@@ -64,6 +64,7 @@ void Service<T>::menu_class(){
             case 2:
                 cout << "2.양식메뉴를 선택하셨습니다." << endl;
                 extract_menu(1, "양식메뉴");
+                // continue;
                 break;
             case 3:
                 cout << "3.찌개를 선택하셨습니다." << endl;
@@ -71,11 +72,11 @@ void Service<T>::menu_class(){
                 break;
             case 4:
                 cout << "4.국,탕을 선택하셨습니다." << endl;
-                extract_menu(1, "국,탕");
+                extract_menu(1, "국/탕");
                 break;
             case 5:
                 cout << "5.밥,죽,떡을 선택하셨습니다." << endl;
-                extract_menu(1, "밥,죽,떡");
+                extract_menu(1, "밥/죽/떡");
                 break;
             case 6:
                 cout << "6.메인반찬을 선택하셨습니다." << endl;
@@ -87,15 +88,15 @@ void Service<T>::menu_class(){
                 break;
             case 8:
                 cout << "8.김치,젓갈을 선택하셨습니다." << endl;
-                extract_menu(1, "김치,젓갈");
+                extract_menu(1, "김치/젓갈");
                 break;
             case 9:
                 cout << "9.양념,소스,잼을 선택하셨습니다." << endl;
-                extract_menu(1, "양념,소스,잼");
+                extract_menu(1, "양념/소스/잼");
                 break;
             case 10:
                 cout << "10.면,만두를 선택하셨습니다." << endl;
-                extract_menu(1, "면,만두");
+                extract_menu(1, "면/만두");
                 break;
             case 11:
                 cout << "11.빵을 선택하셨습니다." << endl;
@@ -115,7 +116,7 @@ void Service<T>::menu_class(){
                 break;
             case 15:
                 cout << "15.차,음료,술을 선택하셨습니다." << endl;
-                extract_menu(1, "차,음료,술");
+                extract_menu(1, "차/음료/술");
                 break;
             case 16:
                 cout << "16.퓨전을 선택하셨습니다." << endl;
@@ -125,9 +126,7 @@ void Service<T>::menu_class(){
                 cout << "17.기타를 선택하셨습니다." << endl;
                 extract_menu(1, "기타");
                 break;
-            case 0:
-                cout << "프로그램을 종료합니다." << endl;
-                exit;
+
             default:
                 cout << "잘못된 입력입니다." << endl;
         }
@@ -297,7 +296,8 @@ void Service<T>::extract_menu(int cmd, const std::string& condition)
         cout << "다른 레시피를 보시겠습니까?(y, n)\n";
         cin >> re;
     }while(re == 'y');
-    delete selected;
+    delete [] selected;
+    return;
 }
 
 //result.csv에서 요리 5개 랜덤으로 추출하는 함수
@@ -322,5 +322,6 @@ void Service<T>::extract_menu(int cmd, const int& condition)
         cout << "다른 레시피를 보시겠습니까?(y, n)\n";
         cin >> re;
     }while(re == 'y');
-    delete selected;
+    delete [] selected;
+    return;
 }

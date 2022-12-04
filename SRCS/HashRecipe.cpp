@@ -103,7 +103,7 @@ bool HashRecipe::canMakeHash(HashRecipe &myIngred)
 
 void HashRecipe::PrintAll() const
 {
-	cout << "레시피 이름 : " << name << "재료 :";
+	cout << "레시피 이름 : " << name << " 재료 :";
 	for (int i = 0; i < SIZE_TABLE; i++)
 	{
 		if (Hashtable[i].name == "") continue;

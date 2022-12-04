@@ -33,14 +33,14 @@ int main(int argc, char *argv[]){
 		}
 		fin.close();
 	}
-	cout << path << "\n";
-	timer.start();
+	// cout << path << "\n";
+	// timer.start();
 	for (int i = 0 ; i < arr.curSize ; i++) {
 		if (arr[i].canMake(myIngred, ingredSize)){
 			canMakeBook.push_back(arr[i]);
 		}
 	}
-	timer.end("vector");
+	// timer.end("vector");
 	Service<Recipe> service(canMakeBook);
 	service.run();
 	// cout << canMakeBook.curSize << "\n";

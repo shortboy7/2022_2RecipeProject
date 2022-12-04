@@ -29,24 +29,11 @@ int main(int argc, char *argv[]){
 		}
 		fin.close();
 	}
-	cout << path << "\n";
-	timer.start();
 	for (int i = 0 ; i < arr.curSize; i++) {
 		if (arr.recipes[i].canMakeVec(ingred)) {
 			canMakeRecipe.push_back(arr.recipes[i]);
-			// cout << page << "\n";
 		}
 	}
-	timer.end("RB tree vec");
-	canMakeRecipe.curSize = 0;
-	timer.start();
-	for (int i = 0 ; i < arr.curSize; i++) {
-		if (arr.recipes[i].canMakeTree(ingred)) {
-			canMakeRecipe.push_back(arr.recipes[i]);
-			// cout << arr.recipes[i] << "\n";
-		}
-	}
-	timer.end("RB tree tree");
 	Service<RBRecipe> service(canMakeRecipe);
 	service.run();
 	return 0;

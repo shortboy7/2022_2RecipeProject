@@ -29,7 +29,7 @@ void RecipeArray<T>::read() {
 			recipes[this->curSize++] = recipe;
 			fout << recipe;
 		}
-		cout << this->curSize << "\n";
+		// cout << this->curSize << "\n";
 		fin.close();
 		fout.close();
 	}
