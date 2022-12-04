@@ -32,7 +32,6 @@ int main(int argc, char *argv[]){
 		}
 		fin.close();
 	}
-	// cout << "ÀÔ·Â °¹¼ö : " << ingredNum << "\n";
 	timer.start();
 	for (int i = 0 ; i < book.curSize ; i++)
 	{
@@ -52,10 +51,12 @@ int main(int argc, char *argv[]){
 		if (book[i].canMakeHash(ingred))
 		{
 			canMakeRecipe2.push_back(book[i]);
-			// cout << page << "\n";
+			// cout << page  "\n";
 		}
 	}
 	timer.end("hash hash");
+	Service<HashRecipe> service(canMakeRecipe1);
+	service.run();
 	// timer_tree.end("Hashtable Hashtable");
 
 	// cout << "2: " << canMakeRecipe2.curSize << "\n";

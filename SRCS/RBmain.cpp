@@ -18,7 +18,6 @@ int main(int argc, char *argv[]){
 	arr.read();
 	ifstream fin(path);
 	if (fin.is_open()) {
-		cout << path << "is opened \n";
 		string input;
 		while(!fin.eof()) {
 			getline(fin, input);
@@ -30,7 +29,7 @@ int main(int argc, char *argv[]){
 		}
 		fin.close();
 	}
-	cout << argv[1] << "\n";
+	cout << path << "\n";
 	timer.start();
 	for (int i = 0 ; i < arr.curSize; i++) {
 		if (arr.recipes[i].canMakeVec(ingred)) {
@@ -48,6 +47,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 	timer.end("RB tree tree");
-
+	Service<RBRecipe> service(canMakeRecipe);
+	service.run();
 	return 0;
 }
